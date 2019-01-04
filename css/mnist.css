@@ -1,0 +1,57 @@
+/*
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito", sans-serif; }
+*/
+
+.container {
+  width: 100%;
+  height: auto; }
+
+.digit-demo-container {
+  margin: 50px auto;
+  width: 980px; }
+
+  .digit-demo-container select {
+/*
+    height: 30px;
+    font-size: 12px;
+*/
+}
+
+.flex-two {
+  display: flex;
+  flex-wrap: wrap; }
+  .flex-two div {
+    flex: 1;
+    padding: 20px;
+    text-align: center; }
+    @media screen and (max-width: 640px) {
+      .flex-two div {
+        padding: 5px; } }
+
+.canvas-box-wrapper {
+  display: block !important; }
+
+.material-button-pink {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin: 0px auto;
+}
+
+.material-button-pink:focus {
+  outline: none; }
+
+.material-button-pink:hover {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 5px 10px rgba(0, 0, 0, 0.22); }
+
+#chart_box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px; }
+  @media screen and (max-width: 640px) {
+    #chart_box {
+      padding: 5px; } }
+
+/*# sourceMappingURL=app.css.map */

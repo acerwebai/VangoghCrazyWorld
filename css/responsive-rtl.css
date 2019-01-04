@@ -1,0 +1,80 @@
+
+@media (max-width: 1200px) {
+
+.action-box .action-box-text { padding-left: 0; }
+.portfolio-parallax-banner p { padding-right: 0; }
+.blog-entry .social strong { margin-right: 0; }
+}
+
+@media screen and (max-width: 991px) {
+
+.page-title, .page-title .page-breadcrumb { text-align: right; }
+.mega-menu .menu-links > li > a i.fa.fa-indicator { right: inherit; left: 20px; }
+.action-box.action-box-border a.button, .action-box.theme-bg a.button, .action-box.black-bg a.button, .action-box.gray-bg a.button, .action-box.full-width a.button { left: 0 }
+.faq .tab .nav.nav-tabs li { margin-bottom: 10px; }
+.service-07 .agency-02-about-content-right { margin-right: 0; }
+.service .our-service { margin-top: 40px; }
+.testimonial { margin-top: 45px; }
+.mega-menu > section.menu-list-items { float: none; }
+.feature-step { padding: 0; }
+.business-date-box .business-date-box-text span { left: -50px; right: inherit; top: 87px; }
+.top-view-video.gray-bg{ margin-top: 30px; }
+.tab-vertical .tab-content { margin-right: 0; }
+.burger-about-content-right { margin-right: 0; }
+#services .feature-text.left-icon .feature-icon { text-align: right; }
+
+.mega-menu .menu-mobile-collapse-trigger { left: 0; right: inherit; }
+.mega-menu .menu-logo > li > a { float: right; }
+.search-cart { left: 50px; right: inherit; }
+#onepagenav.onepage-hover-01 .mega-menu .menu-links > li > a:hover, #onepagenav.onepage-hover-01 .mega-menu .menu-links > li.active > a { box-shadow: none !important; }
+.mega-menu .drop-down-multilevel i.fa-indicator { left: 20px; right: inherit; }
+.st-effect-3 .header.default.fullWidth .search-cart { left: 45px; right: inherit; top: 1px; }
+.menu-responsive { text-align: left; }
+.header.logo-center.magazine-header .mega-menu .menu-links > li > a { padding: 10px 8px; }
+.header.burger span.text-white { color: #ffffff !important; }
+
+}
+
+
+@media (max-width: 767px) {
+
+.footer-widget { text-align: right; }
+.contact-2 .media { margin-bottom: 20px; }
+div.dataTables_wrapper div.dataTables_filter { text-align: center; }
+.conference-about-content-right, .agency-02-about-content-right { margin-right: 0; }
+.login-box { border-radius: 0px; }
+
+
+}
+
+
+@media (max-width: 600px) {
+
+.our-history .timeline > li .timeline-badge p { float: left; margin-right: 0; text-align: left; }
+.our-history .timeline > li.timeline-inverted > .timeline-panel::before, .our-history .timeline > li > .timeline-panel::before { right: 40px; right: inherit; }
+.our-history .timeline > li.timeline-inverted .timeline-badge p { margin-left: 35px; }
+.our-history .timeline .timeline-arrow { right: inherit; }
+.our-history .timeline > li.timeline-inverted > .timeline-panel { text-align: left }
+.blockquote-section .blockquote-section-right { margin-right: 0; }
+.port-post-info { padding-right: 0; }
+.button.x-small { margin-left: 0px; }
+
+
+.tab-vertical .tab-content { margin-right: 0; }
+.business-feature.feature-text { margin-right: 0 !important; }
+.barber .about-history { margin-left: 50px; }
+.burger-welcome-content { padding-right: 0; }
+
+}
+
+
+@media (max-width: 479px) {
+
+.action-box.theme-bg { padding: 30px 15px; }
+.shop-block .button { margin-bottom: 5px; margin-right: 0; }
+.touch-in .contact-box { padding-bottom: 0; }
+.contact-3 .contact-add { height: 260px; }
+.business-date-box-text { padding-right: 0; }
+
+
+}

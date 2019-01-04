@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="Acer AI Attraction Web" />
+<meta name="description" content="Acer AI Attraction Web" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Acer AI Attraction Web</title>
+
+
+<!-- Favicon -->
+<!--
+<link rel="shortcut icon" href="images/favicon.ico" />
+-->
+<!-- font -->
+<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,500,500i,600,700,800,900|Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700,800">
+ 
+<!-- Plugins -->
+<link rel="stylesheet" type="text/css" href="css/plugins-css.css" />
+
+<!-- revoluation -->
+<link rel="stylesheet" type="text/css" href="revolution/css/settings.css" media="screen" />
+
+<!-- Typography -->
+<link rel="stylesheet" type="text/css" href="css/typography.css" />
+
+<!-- Shortcodes -->
+<link rel="stylesheet" type="text/css" href="css/shortcodes/shortcodes.css" />
+
+<!-- Style -->
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<!-- Responsive -->
+<link rel="stylesheet" type="text/css" href="css/responsive.css" /> 
+ 
+  <link rel="stylesheet" type="text/css" href="css/style_transfer_style.css">
+  
+<link rel="stylesheet" type="text/css" href="css/new.css" /> 
+ 
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.dom.min.js"></script>
+  <script src="libraries/ml5.min.js"></script>
+  
+  <style>
+    img {
+      width: 250px;
+      height: 250px;
+    }
+  </style>
+</head>
+ <script src="js/sketch.js"></script>
+<body>
+ 
+<div class="wrapper">
+  
+<!--=================================
+ preloader -->
+ 
+<div id="pre-loader">
+    <img src="images/pre-loader/loader-01.svg" alt="">
+</div>
+
+<!--=================================
+ preloader -->
+    
+<!--=================================
+ header -->
+
+<header id="header" class="header light">
+ 
+<!--=================================
+ mega menu -->
+
+<div class="menu">  
+  <!-- menu start -->
+   <nav id="menu" class="mega-menu">
+    <!-- menu list items container -->
+    <section class="menu-list-items">
+     <div class="container"> 
+      <div class="row"> 
+       <div class="col-lg-12 col-md-12"> 
+        <!-- menu logo -->
+        <ul class="menu-logo">
+            <li>
+<!--                <a href="index-01.html"><img id="logo_img" src="images/logo.png" alt="logo"> </a>-->
+                <a href="index.html"><h3 class="theme-color mt-10">Acer AI Attraction Web</h3></a>
+            </li>
+        </ul>
+        <!-- menu links -->
+        <div class="menu-bar mr-0">
+         <ul class="menu-links">
+            <li><a href="index.html#wtshot">What's hot</a></li>
+            <li><a href="#">Signature</a></li>
+            <li class="active"><a href="generic.html">Generic</a></li>
+<!--
+            <li><a href="javascript:void(0)"> Approach <i class="fa fa-angle-down fa-indicator"></i></a>
+                <ul class="drop-down-multilevel">
+                    <li><a href="javascript:void(0)">Culture<i class="ti-plus fa-indicator"></i></a>
+                     <ul class="drop-down-multilevel">
+                       <li><a href="style_transfer.html">Artistic</a></li>
+                      <li><a href="teachable_machine.html">Apprael</a></li>
+                      <li><a href="#">Music</a></li>
+                      <li><a href="#">Word</a></li>
+                      <li><a href="#">Time</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="javascript:void(0)">Life<i class="ti-plus fa-indicator"></i></a>
+                     <ul class="drop-down-multilevel">
+                        <li><a href="#">Enlightenment</a></li>
+                        <li><a href="#">Analytic</a></li>
+                        <li><a href="#">Funny</a></li>
+                        <li><a href="#">Photo</a></li>
+                        <li><a href="#">Observation</a></li>
+                        <li><a href="#">Weather</a></li>
+                        <li><a href="#">DIY</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="javascript:void(0)">Productivity<i class="ti-plus fa-indicator"></i></a>
+                     <ul class="drop-down-multilevel">
+                        <li><a href="#">Presentation</a></li>
+                        <li><a href="#">Meeting</a></li>
+                      </ul>
+                    </li>
+                </ul>
+            </li>
+-->
+
+            <li><a href="javascript:void(0)">Framework<i class="fa fa-angle-down fa-indicator"></i></a>
+                <!-- drop down multilevel  -->
+                <ul class="drop-down-multilevel left-side">
+                    
+                    <li><a href="#">TensorFlow</a></li>
+                    <li><a href="#">Keras</a></li>
+                    <li><a href="#">CNTK</a></li>
+                    <li><a href="#">Pytorch</a></li>
+                    <li><a href="#">MXNet</a></li>
+                    <li><a href="#">Caffe2</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </nav>
+  <!-- menu end -->
+ </div>
+</header>
+
+<!--=================================
+ header -->
+
+<section class="page-title pt-110 pb-30 bg-overlay-black-60 parallax" data-jarallax='{"speed": 0.6}' style="background-image: url(images/blog/big/grid_draws.png);">
+  <div class="container">
+    <div class="row"> 
+      <div class="col-lg-12"> 
+      <div class="page-title-name">
+          <h1>Artistic</h1>
+          <p>Makes your photo or video more artistic.</p>
+        </div>
+              <div class="share clearfix dt-mt--50">
+<!--               <a class="button x-small" href="https://teachablemachine.withgoogle.com/">Launch Experiment</a>-->
+                  <div class="social xs-mt-10 float-right">
+                      <ul>
+                          <li>
+                              <a class="button x-small" href="#"> <i class="fa fa-android"></i> </a>
+                          </li>
+                          <li>
+                              <a class="button x-small" href="#"> <i class="fa fa-windows"></i> </a>
+                          </li>
+                          <li>
+                              <a class="button x-small" href="#"> <i class="fa fa-github"></i> </a>
+                          </li>
+                          <li>
+                              <a class="button x-small" href="#"> <i class="fa fa-code"></i> </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+     </div>
+     </div>
+  </div>
+</section>
+
+<!--=================================
+ portfolio -->
+
+<section class="white-bg">
+  <div class="container">
+    <div class="row">
+    
+     <div class="col-lg-4 col-md-12 input-container">
+     <div class="pt-50 pb-30">
+         <button type="button" class="button btn-circle mr-10 disable">1</button>
+         Select photo or video
+     </div>
+      <div class="tab tab-border">
+        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active show" id="home-04-tab" data-toggle="tab" href="#example" role="tab" aria-controls="example" aria-selected="true">Example</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-04-tab" data-toggle="tab" href="#upload" role="tab" aria-controls="upload" aria-selected="false">Upload Photo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="webcam-tab" data-toggle="tab" href="#webcam" role="tab" aria-controls="portfolio-04" aria-selected="false">Webcam</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="example-tab">
+            <div class="tab-pane fade active show" id="example" role="tabpanel" aria-labelledby="example-tab">
+<!--    <h3 class="title text-center">INPUT</h3>-->
+    <div class="center-container"  style="opacity: 0;">
+      <img id="input-img" src='images/taipei101.jpg'/>
+<!--      <div id="input-source" class="reverse-img"></div>-->
+    </div>
+    <div class="mg-200"></div>
+    
+    <div class="style-container1 row">
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#" autofocus>
+          <img class="image" id="taipei101" src='images/taipei101.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="Colosseum" src='images/Colosseum.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="Sydney" src='images/Sydney.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+    </div>
+    <div class="style-container1 row">
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#" autofocus>
+          <img class="image" id="BurjAlArab" src='images/BurjAlArab.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="ArcdeTriomphe" src='images/ArcdeTriomphe.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="ShanghaiCenter" src='images/ShanghaiCenter.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+    </div>
+    <div class="style-container1 row">
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#" autofocus>
+          <img class="image" id="sunset1" src='images/sunset1.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="sunset2" src='images/sunset2.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="sunset3" src='images/sunset3.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+    </div>
+
+<!--  
+    <div class="style-container">
+      <input id="uploader" name="inputImgFile" type="file" accept="image/*">
+      <div class="link" onclick="uploadImg()">Upload an image</div>
+      <div class="link" onclick="useWebcam()">Use my webcam</div>
+    </div>
+-->
+     </div>
+           
+            <div class="tab-pane fade" id="upload" role="tabpanel" aria-labelledby="upload-tab">
+               <div class="center-container">
+<!--                  <img id="input-img1" src='images/girlwithpearl.jpg'/>-->
+<!--                  <div id="input-source1" class="reverse-img"></div>-->
+                </div>
+<!--                <div class="mg-200"></div>-->
+                
+                <div class="style-container">
+<!--                  <input id="uploader" name="inputImgFile" type="file" accept="image/*">-->
+                  <div class="link" onclick="uploadImg()"><i class="fa fa-upload"></i> Upload an image</div>
+            <!--      <div class="link" onclick="useWebcam()">Use my webcam</div>-->
+                </div>
+            </div>
+            
+            
+            <div class="tab-pane fade" id="webcam" role="tabpanel" aria-labelledby="webcam-tab">
+                    <div class="center-container">
+                      <img id="input-img2" src='images/girlwithpearl.jpg'/>
+                      <div id="input-source2" class="reverse-img"></div>
+                    </div>
+                 <div class="style-container">
+                      <input id="uploader" name="inputImgFile" type="file" accept="image/*">
+                <!--      <div class="link" onclick="uploadImg()">Upload an image</div>-->
+                      <div class="link" onclick="useWebcam()">Use my webcam</div>
+                    </div>
+            </div>
+          </div> 
+      </div>
+    </div>
+    
+
+  <div id="learning-container" class="col-lg-4 col-md-12">
+    <div class="pt-50 pb-30">
+         <button type="button" class="button btn-circle mr-10 disable">2</button>
+         Choose style
+     </div>
+     <div class="mg-200"></div>
+    <div class="center-container" style="opacity: 0;">
+      <img id="style-img" src='images/starrynight.jpg' width="0" height="0">
+    </div>
+    <div class="border pd-20 pt-45 xs-pt-40 min-h-320">
+        <div class="style-container1 row">
+          <div class="container1 col-4">
+            <a class="imageAnchor" href="#" autofocus>
+              <img class="image" id="starrynight" src='images/starrynight.jpg' onclick="updateStyleImg(this)"/>
+            </a>
+          </div>
+          <div class="container1 col-4">
+            <a class="imageAnchor" href="#">
+              <img class="image" id="Red-Vineyards" src='images/Red-Vineyards.jpg' onclick="updateStyleImg(this)"/>
+            </a>
+          </div>
+          <div class="container1 col-4">
+            <a class="imageAnchor" href="#">
+              <img class="image" id="Wheatfield_with_Crows" src='images/Wheatfield_with_Crows.jpg' onclick="updateStyleImg(this)"/>
+            </a>
+          </div>
+        </div>
+        <div class="style-container1 row">
+          <div class="container1 col-4">
+            <a class="imageAnchor" href="#">
+              <img class="image" id="sien_with_a_cigar" src='images/sien_with_a_cigar.jpg' onclick="updateStyleImg(this)"/>
+            </a>
+          </div>
+          <div class="container1 col-4">
+            <a class="imageAnchor" href="#">
+              <img class="image" id="Soup-Distribution" src='images/Soup-Distribution.jpg' onclick="updateStyleImg(this)"/>
+            </a>
+          </div>
+          <div class="container1 col-4">
+            <a class="imageAnchor" href="#">
+              <img class="image" id="self-portrait" src='images/self-portrait.jpg' onclick="updateStyleImg(this)"/>
+            </a>
+          </div>
+        </div>
+        <div class="style-container1 row">
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="la-campesinos" src='images/la-campesinos.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="bedroom" src='images/bedroom.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+      <div class="container1 col-4">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="Sunflowers-Bew" src='images/Sunflowers-Bew.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="output-container col-lg-4 col-md-12">
+        <div class="pt-50 pb-30">
+         <button type="button" class="button btn-circle mr-10 disable">3</button>
+         Result
+     </div>
+     <div class="border pd-20 min-h-320 pt-30">
+        <div id="output-img-container"></div>
+         <div class="style-container">
+          <button class="button btn-block" onclick="onPredictClick()">Transfer</button>
+        </div>
+    </div>
+  </div>
+     
+    
+    </div>
+ </div>
+ </section>
+
+<!--=================================
+ portfolio -->
+  
+  <section class="gray-bg">
+   <div class="container2 pt-60 pb-30 mt-20">
+<!--
+     <div class="row">
+        <div class="col-lg-12 col-md-12">
+-->
+              <div class="owl-carousel min-h-400" data-nav-dots="true" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="20" data-autoheight="true">
+                 <div class="item container">
+                      <div class="row">
+                       <div class="col-lg-3 sm-mb-30">
+                         <img class="img-fluid full-width" src="images/vangogh.jpg" alt="">
+                     </div>
+                    <div class="col-lg-9">
+                      <div class="team-details">
+                      <div class="clearfix">
+                        <div class="title float-left mb-20 xs-mb-0">
+                          <h2 class="theme-color">Vincent van Gogh</h2>
+                          <p>1853-1890<br>Post-Impressionism, Neo-impressionism</p>
+<!--                          <p>Post-Impressionism, Neo-impressionism</p>-->
+                         </div>
+                         <div class="social-icons social-border color-hover float-right mt-40 xs-mt-0 xs-mb-20">
+                           <ul>
+                              <a class="button x-small" href="https://teachablemachine.withgoogle.com/">Get Style</a>
+                           </ul>
+                          </div>
+                          
+                         </div>
+                        <div class="clearfix">
+                           <p>Vincent Willem van Gogh (Dutch: [ˈvɪnsɛnt ˈʋɪləm vɑŋ ˈɣɔx] (About this soundlisten);[note 1] 30 March 1853 – 29 July 1890) was a Dutch Post-Impressionist painter who is among the most famous and influential figures in the history of Western art. In just over a decade he created about 2,100 artworks, including around 860 oil paintings, most of them in the last two years of his life. They include landscapes, still lifes, portraits and self-portraits, and are characterised by bold colours and dramatic, impulsive and expressive brushwork that contributed to the foundations of modern art.</p>
+                        </div>    
+                      </div>
+                     </div>
+                   </div>
+                </div>
+                
+                 <div class="item container">
+                 <div class="row">
+                       <div class="col-lg-3 sm-mb-30">
+                         <img class="img-fluid full-width" src="images/vangogh.jpg" alt="">
+                     </div>
+                    <div class="col-lg-9">
+                      <div class="team-details">
+                      <div class="clearfix">
+                        <div class="title float-left mb-20 xs-mb-0">
+                          <h2 class="theme-color">Vincent van Gogh</h2>
+                          <p>1853-1890<br>Post-Impressionism, Neo-impressionism</p>
+<!--                          <p>Post-Impressionism, Neo-impressionism</p>-->
+                         </div>
+                         <div class="social-icons social-border color-hover float-right mt-40 xs-mt-0 xs-mb-20">
+                           <ul>
+                              <a class="button x-small" href="https://teachablemachine.withgoogle.com/">Get Style</a>
+                           </ul>
+                          </div>
+                          
+                         </div>
+                        <div class="clearfix">
+                           <p>Vincent Willem van Gogh (Dutch: [ˈvɪnsɛnt ˈʋɪləm vɑŋ ˈɣɔx] (About this soundlisten);[note 1] 30 March 1853 – 29 July 1890) was a Dutch Post-Impressionist painter who is among the most famous and influential figures in the history of Western art. In just over a decade he created about 2,100 artworks, including around 860 oil paintings, most of them in the last two years of his life. They include landscapes, still lifes, portraits and self-portraits, and are characterised by bold colours and dramatic, impulsive and expressive brushwork that contributed to the foundations of modern art.</p>
+                        </div>    
+                      </div>
+                     </div>
+                   </div>
+                </div>
+                 <div class="item container">
+                 <div class="row">
+                       <div class="col-lg-3 sm-mb-30">
+                         <img class="img-fluid full-width" src="images/vangogh.jpg" alt="">
+                     </div>
+                    <div class="col-lg-9">
+                      <div class="team-details">
+                      <div class="clearfix">
+                        <div class="title float-left mb-20 xs-mb-0">
+                          <h2 class="theme-color">Vincent van Gogh</h2>
+                          <p>1853-1890<br>Post-Impressionism, Neo-impressionism</p>
+<!--                          <p>Post-Impressionism, Neo-impressionism</p>-->
+                         </div>
+                         <div class="social-icons social-border color-hover float-right mt-40 xs-mt-0 xs-mb-20">
+                           <ul>
+                              <a class="button x-small" href="https://teachablemachine.withgoogle.com/">Get Style</a>
+                           </ul>
+                          </div>
+                          
+                         </div>
+                        <div class="clearfix">
+                           <p>Vincent Willem van Gogh (Dutch: [ˈvɪnsɛnt ˈʋɪləm vɑŋ ˈɣɔx] (About this soundlisten);[note 1] 30 March 1853 – 29 July 1890) was a Dutch Post-Impressionist painter who is among the most famous and influential figures in the history of Western art. In just over a decade he created about 2,100 artworks, including around 860 oil paintings, most of them in the last two years of his life. They include landscapes, still lifes, portraits and self-portraits, and are characterised by bold colours and dramatic, impulsive and expressive brushwork that contributed to the foundations of modern art.</p>
+                        </div>    
+                      </div>
+                     </div>
+                   </div>
+                </div>
+             </div>
+<!--
+        </div>
+     </div>
+-->
+    </div>
+    </section>
+
+<!--=================================
+ footer -->
+
+<footer class="footer black-bg">
+ <div class="container">
+     <div class="footer-widget mt-0">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p class="mt-15"> All trademarks, images, product names and logos appearing on the site are the property of their respective owners. </p>
+      </div>
+     </div>    
+    </div>
+   </div>
+</footer>
+
+<!--=================================
+ footer -->
+
+</div>
+<!--
+<div class="top-links">
+   <ul>
+       <li><a class="button x-small" href="#">Build Android APK on Chromebook</a></li>
+       <li><a class="button x-small" href="#">Build Windows App on Win10</a></li>
+       <li><a class="button x-small" href="#">Fork it</a></li>
+       <li><a class="button x-small" href="#">Get Source Code</a></li>
+   </ul>
+</div>
+-->
+<div id="back-to-top">
+    <a class="top arrow" href="#top"><i class="fa fa-angle-up"></i> <span>TOP</span></a>
+</div>
+ 
+<!--=================================
+ jquery -->
+
+<!-- jquery -->
+<script src="js/jquery-3.3.1.min.js"></script>
+
+<!-- plugins-jquery -->
+<script src="js/plugins-jquery.js"></script>
+
+<!-- plugin_path -->
+<script>var plugin_path = 'js/';</script>
+ 
+<!-- REVOLUTION JS FILES -->
+<script src="revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.video.min.js"></script>
+<!-- revolution custom --> 
+<script src="revolution/js/revolution-custom.js"></script> 
+
+<!-- custom -->
+<script src="js/custom.js"></script>
+
+ 
+
+</body>
+</html>

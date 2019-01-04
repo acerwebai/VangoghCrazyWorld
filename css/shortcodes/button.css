@@ -1,0 +1,48 @@
+
+/***************************
+        button
+***************************/
+.button { background: #84ba3f; padding: 10px 20px; font-size: 13px; letter-spacing: 1px; font-family: 'Montserrat', sans-serif; border: 0; color: #ffffff; text-transform: uppercase; font-weight: 500; display: inline-block; border-radius: 3px; text-align: center; border:2px solid #84ba3f; cursor: pointer; }
+.button + .button {margin-left: 20px;}
+.button:hover, .button:focus { background: #353535; color: #ffffff; border-color: #353535; }
+button { transition: all 0.5s ease-in-out; -webkit-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -ms-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; }
+.button.black { background: #353535; color: #ffffff; border:2px solid #353535;}
+.button.black:hover, .button.black.active, .button.black:focus { background: #84ba3f; color: #ffffff; border-color: #84ba3f; }
+.button.gray { background: #e0e0e0; color: #353535; border:2px solid #e0e0e0; }
+.button.gray:hover, .button.gray.active, .button.gray:focus { background: #84ba3f; color: #ffffff; border-color: #84ba3f;}
+.button.white { background: #fff; color: #84ba3f; border-color: #ffffff; }
+.button.white:hover, .button.white:focus { background: #353535; color: #ffffff; border-color: #353535;}
+.button.button-border { background: transparent; border: 2px solid #84ba3f; color: #323232; }
+.button.button-border:hover, .button.button-border:focus { background: #84ba3f; color: #ffffff; border-color: #84ba3f; }
+.button.button-border.gray { background: transparent; border: 2px solid #e0e0e0; color: #aaaaaa; }
+.button.button-border.gray:hover, .button.button-border.gray:focus { background: #84ba3f; color: #ffffff; border-color: #84ba3f; }
+.button.button-border.white { background: transparent; border: 2px solid #fff; color: #fff; }
+.button.button-border.white:hover, .button.button-border.white:focus { background: #fff; color: #84ba3f; border-color: #fff; }
+.button.button-border.black { background: transparent; border: 2px solid #353535; color: #353535; }
+.button.button-border.black:hover, .button.button-border.black:focus { background: #353535; color: #ffffff; border-color: #353535; }
+.button.icon i { margin-left: 10px; }
+/*button with icon*/
+.button.arrow { background: transparent; border: none; color: #84ba3f; padding: 0; font-weight: 600; }
+.button.arrow i { padding-left: 10px; font-size: 16px; }
+.button.arrow:hover { color: #353535; }
+.button.arrow.white { color: #ffffff; border: none; }
+.button.arrow.white:hover { color: #aaaaaa; background: transparent; }
+.button.icon-color{background: none; border: none; color: #84ba3f; padding: 0}
+.button.icon-color:hover{color: #353535; background: transparent; }
+.button.icon-color i{border: 1px solid #84ba3f; border-radius: 50%; height: 22px; width: 22px; line-height: 20px;  margin-left: 10px; transform: translateX(0px); transition: all 0.5s cubic-bezier(0.76, 0.46, 0.22, 1) 0s;}
+.button.icon-color:hover i { background: #353535; border-color: #353535; color: #ffffff; transform: translateX(3px);}
+.button.icon-color.white:hover { color: #ffffff; border:none; background: none;}
+.button.icon-color.white:hover i { background: #ffffff; color: #84ba3f; border-color: #ffffff; }
+.button-black-iocn .button.icon-color { color: #ffffff; }
+.button-black-iocn .button.icon-color i { border-color: #ffffff; }
+.button-black-iocn .button.icon-color:hover i { background: #ffffff; color: #323232; }
+.button-black-iocn .button.icon-color:hover { color: #323232; }
+.big-button { padding: 28px 26px; font-size: 24px; }
+.big-button span { display: block; font-size: 12px; margin-top: 6px;}
+.button.x-small { padding: 8px 14px; font-size: 12px; }
+.button.small { padding: 10px 18px; font-size: 12px; }
+.button.medium { padding: 12px 20px; font-size: 14px; }
+.button.large { padding: 14px 20px; font-size: 15px; }
+.button + .button.btn-block  { margin-left: 0; }
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus { background: #84ba3f; border-color: #84ba3f; box-shadow: 0 0 0 0.2rem rgba(132,186,63,0.5); }
+.btn-primary.focus, .btn-primary:focus { box-shadow: 0 0 0 0.2rem rgba(132,186,63,0.5); background: #84ba3f; border-color: #84ba3f; }

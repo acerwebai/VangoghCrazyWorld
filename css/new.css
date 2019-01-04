@@ -1,0 +1,112 @@
+ul {
+    list-style: none;
+}
+
+.top-links{
+    transition: all .5s ease-in-out;
+    position: fixed;
+    bottom: 165px;
+    right: 15px;
+    z-index: 999;
+    float: right;
+
+}
+
+.top-links ul li{
+    margin-top: 10px;
+}
+
+.top-links ul li a{
+    font-size: 10px!important;
+    text-transform: none;
+    width: 140px;
+}
+
+.share .social ul li {
+    padding: 0px 12px 0px 0px;
+}
+
+.share .social ul li a {
+    width: 45px;
+    text-align: center;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.share .social ul li a:hover {
+    background: #fff;
+/*    border: #ccc;*/
+}
+
+.port-meta li span{
+    word-break: break-all;   
+}
+
+.mega-menu .drop-down-multilevel .drop-down-multilevel {
+    left: -100%;
+}
+
+.generic-item-info {
+    min-height: 160px;
+    padding: 0 15px;
+}
+
+.generic-title-box {
+    padding: 15px;
+    height: 460px;
+}
+
+.signature-item-info{
+    min-height: 200px;
+    padding: 0 15px;
+}
+
+.disable{
+   cursor: not-allowed;
+   pointer-events: none;
+}
+
+.mt--50 {
+    margin-top: -50px;
+}
+
+.mega-menu .menu-logo > li > a {
+    padding: 5px 0;
+}
+
+@media (min-width: 767px){
+.dt-mt--50 {
+    margin-top: -50px !important;
+}
+}
+
+@media (min-width: 1220px) {
+    body.frame-layout .header.default, 
+    body.frame-layout .header.transparent, 
+    body.frame-layout header.one-page {
+        overflow: visible;
+    }
+}
+@media (min-width: 992px) {
+    .mega-menu > section.menu-list-items .menu-bar > ul > li {
+        height: 50px;
+    }
+    nav#menu.desktopTopFixed {
+    min-height: 50px;
+}
+}
+
+
+@media (min-width: 993px) {
+    .hideindesktop{
+        display: none!important;
+    }
+    
+}
+@media (max-width: 992px) {
+    .showindesktoponly{
+        display: none !important;
+    }
+    
+}
