@@ -3,7 +3,7 @@
 Here are a few pictures that are suitable for conversion into Van Gogh paintings. Together with selected classic Van Gogh paintings, you can use the artificial intelligence technology of style transfer to let you experience Van Gogh in modern scenes and draw it.
 
 
-
+******this sample is under cooking **************
 
 One Paragraph of project description goes here, example: Neural Style Transfer, Van Gogh Crazy World
 Descriptions:
