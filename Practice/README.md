@@ -57,7 +57,7 @@ Use evaluate.py to evaluate a style transfer network. Run python evaluate.py to 
 Thanks all authors of following projects. 
 
 * The source code of this practice is major borrowed from [fast-style-transfer](https://github.com/lengstrom/fast-style-transfer) Github repository.
-* 
+* refer to some opinion in [Neural Style Transfer: A Review](https://arxiv.org/abs/1705.04058)
    
 
 ## License
