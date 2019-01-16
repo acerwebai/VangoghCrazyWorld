@@ -3,20 +3,25 @@
 ## Neural style transfer
 
 Neural style transfer is the process of taking the style of one image then applying it to the content of another image.
+
 Offering you a variety of beautiful styles some of which are paintings by famous artists like Starry Night by Van Gogh.
 
 
 ## Vincent van Gogh
+
 For more Vincent van Gogh, please refer to [wiki](https://en.wikipedia.org/wiki/Vincent_van_Gogh)
 
 ## Tensorflow
+
 The source code in this project is written in Tensorflow
+
 For more Vincent van Gogh, please refer to [Tensorflow](https://www.tensorflow.org/)
 
 
 ## Experience
 
 We would like to bring you to Vangogh Crazy World, insight the sample code, you can use pre-trained model or you can try to train your own models.
+
 After that you can decided to deploy on various devices which running on to Windows or Android and even OS independent web pages.
 
 ## Table of Contents (Optional)
@@ -81,6 +86,7 @@ source $HOME/tmp/VangoghCrazyWorld-venv/bin/activate
 ```
 
 In that, you can isolate the working environments project by project.
+
 So, please workon this virtual environment for the following installations.
 
 ### Installing
@@ -153,6 +159,7 @@ Loss = alpha*C_loss(C_Lys, C, G) + beta*S_Loss(S_Lys, S, G)
 ```
 
 Therefore, we can tuning the total loss via  
+
 * --content-weight
 * --style-weight
 
@@ -189,7 +196,9 @@ You should find the checkpoint @--checkpoint-dir folder
 ### Frozen Model
 
 You should find the checkpoint @--checkpoint-dir folder
+
 We use the Tensorflow [freeze_graph.py](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py) to make it frozen
+
 We need frozen model for deployment to various devices in Windows or Android, or even OS independent web pages
 
 ## Deployment
@@ -230,6 +239,7 @@ VGG16
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 
