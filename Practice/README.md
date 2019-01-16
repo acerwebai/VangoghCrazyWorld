@@ -31,7 +31,7 @@ Base on starry night with 300x255:
 Following are some example that training target style by parameters, content weight: 7e0, style weight: 1e3, batch size: 1. 
 
 <table><tr><td>content</td><td>Result</td><td>Vangogh Style</td></tr>
-<tr><td><img src = 'examples/content/taipei101fireworks2017.jpg' height = '180px'> <br> CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/4591be29-a60e-4499-99b1-0158ae5a2620'> Sinchen.Lin</a></td><td><img src='examples/results/Taipei101Fireworks2017.jpg' height='246px'></td><td><img src = 'examples/style/Starry_Night.jpg' height = '180px'></td></tr>
+<tr><td><img src = 'examples/content/Taipei101Fireworks2017.jpg' height = '180px'> <br> CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/4591be29-a60e-4499-99b1-0158ae5a2620'> Sinchen.Lin</a></td><td><img src='examples/results/Taipei101Fireworks2017.jpg' height='246px'></td><td><img src = 'examples/style/Starry_Night.jpg' height = '180px'></td></tr>
 
 <tr><td><img src = 'examples/content/livingroom.jpg' height = '180px'><br> CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/c1e8a8f5-391a-4467-8740-bbcf7d1fb490'>ppacificvancouver</a></td><td><img src = 'examples/results/livingroom.jpg' height = '246px'></td><td><img src = 'examples/style/bedroom-315-256.jpg' height = '180px'></td></tr>
 
@@ -41,14 +41,14 @@ Following are some example that training target style by parameters, content wei
 
 <tr><td><img src = 'examples/content/ZodiacHeads.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/a6a114be-a9b8-4997-a4f4-f166219eaf9f'> Sam Beebe</a></td><td><img src = 'examples/results/ZodiacHeads.jpg' height = '246px'></td><td><img src = 'examples/style/self-portrait-256-317.jpg' height = '180px'></td></tr>
 
-<tr><td><img src = 'examples/content/Mabrymill.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/e50874ce-3112-4560-b459-8556892d9d14'>Eli Christman </a></td><td><img src = 'examples/results/Mabrymill.jpg' height = '246px'></td><td><img src = 'examples/style/sien_with_a_cigar-323-256.jpg' height = '180px'></td></tr>
+<tr><td><img src = 'examples/content/MabryMill.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/e50874ce-3112-4560-b459-8556892d9d14'>Eli Christman </a></td><td><img src = 'examples/results/MabryMill.jpg' height = '246px'></td><td><img src = 'examples/style/sien_with_a_cigar-323-256.jpg' height = '180px'></td></tr>
 
 <tr><td><img src = 'examples/content/happyhour.jpg' height = '180px'><br> CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/0c8907a8-8686-4def-8474-6ded08686879'>nan palmero</a></td><td><img src = 'examples/results/happyhour.jpg' height = '246px'></td><td><img src = 'examples/style/Soup-Distribution-256-330.jpg' height = '180px'></td></tr>
 
 <tr><td><img src = 'examples/content/flower.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/75e55abf-5659-492b-babe-d9eb54b5779f'>Ms. Phoenix</a></td><td><img src = 'examples/results/flower.jpg' height = '246px'></td><td><img src = 'examples/style/Sunflowers-Bew-256-256.jpg' height = '180px'></td></tr>
 <tr><td><img src = 'examples/content/farm.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/f1dc2822-f4c1-4f66-8990-f9985a5dc179'> Andrew Gould</a></td><td><img src = 'examples/results/avg_300_255-7.0_600.png' height = '246px'></td><td><img src = 'examples/style/Wheatfield_with_Crows-320-255.jpg' height = '180px'></td></tr>
 </table>
-
+##
 ### Requirements
 If you want to practice on Windows, following instructions in <a href='file:../windows'>Windows</a> practice to setup the practice environment.
 
