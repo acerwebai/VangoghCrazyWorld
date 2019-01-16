@@ -208,7 +208,7 @@ For the deployment, please follow the instructions below
 ## Built With
 
 ### Android APP
-See [Android_README.md](Android_README.md)
+See [Android Application](https://github.com/acerwebai/VangoghCrazyWorld/blob/master/Chromebook/README.md)
 ### Windows APP
 See [Windows_README.md](Windows_README.md)
 ### Web pages
