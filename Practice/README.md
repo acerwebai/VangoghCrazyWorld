@@ -35,9 +35,7 @@ Following are some example that training target style by parameters, content wei
 
 <tr><td><img src = 'examples/content/livingroom.jpg' height = '180px'><br> CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/c1e8a8f5-391a-4467-8740-bbcf7d1fb490'>ppacificvancouver</a></td><td><img src = 'examples/results/livingroom.jpg' height = '246px'></td><td><img src = 'examples/style/bedroom-315-256.jpg' height = '180px'></td></tr>
 
-<tr><td><img src = 'examples/content/farm.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/f1dc2822-f4c1-4f66-8990-f9985a5dc179'> Andrew Gould</a></td><td><img src = 'examples/results/farm.jpg' height = '246px'></td><td><img src = 'examples/style/la-campesinos-319-256.jpg' height = '180px'></td></tr>
-
-<tr><td><img src = 'examples/content/farm.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/f1dc2822-f4c1-4f66-8990-f9985a5dc179'> Andrew Gould</a></td><td><img src = 'examples/results/farm-r' height = '246px'></td><td><img src = 'examples/style/Red-Vineyards-328-256.jpg' height = '180px'></td></tr>
+<tr><td><img src = 'examples/content/farm.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/f1dc2822-f4c1-4f66-8990-f9985a5dc179'> Andrew Gould</a></td><td><img src = 'examples/results/farm-r.jpg' height = '246px'></td><td><img src = 'examples/style/Red-Vineyards-328-256.jpg' height = '180px'></td></tr>
 
 <tr><td><img src = 'examples/content/ZodiacHeads.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/a6a114be-a9b8-4997-a4f4-f166219eaf9f'> Sam Beebe</a></td><td><img src = 'examples/results/ZodiacHeads.jpg' height = '246px'></td><td><img src = 'examples/style/self-portrait-256-317.jpg' height = '180px'></td></tr>
 
@@ -46,7 +44,11 @@ Following are some example that training target style by parameters, content wei
 <tr><td><img src = 'examples/content/happyhour.jpg' height = '180px'><br> CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/0c8907a8-8686-4def-8474-6ded08686879'>nan palmero</a></td><td><img src = 'examples/results/happyhour.jpg' height = '246px'></td><td><img src = 'examples/style/Soup-Distribution-256-330.jpg' height = '180px'></td></tr>
 
 <tr><td><img src = 'examples/content/flower.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/75e55abf-5659-492b-babe-d9eb54b5779f'>Ms. Phoenix</a></td><td><img src = 'examples/results/flower.jpg' height = '246px'></td><td><img src = 'examples/style/Sunflowers-Bew-256-256.jpg' height = '180px'></td></tr>
+
 <tr><td><img src = 'examples/content/farm.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/f1dc2822-f4c1-4f66-8990-f9985a5dc179'> Andrew Gould</a></td><td><img src = 'examples/results/farm-w.jpg' height = '246px'></td><td><img src = 'examples/style/Wheatfield_with_Crows-320-255.jpg' height = '180px'></td></tr>
+
+<tr><td><img src = 'examples/content/farm.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/f1dc2822-f4c1-4f66-8990-f9985a5dc179'> Andrew Gould</a></td><td><img src = 'examples/results/farm.jpg' height = '246px'></td><td><img src = 'examples/style/la-campesinos-319-256.jpg' height = '180px'></td></tr>
+
 </table>
 
 ### Requirements
@@ -74,14 +76,39 @@ Use evaluate.py to evaluate a style transfer network. Run python evaluate.py to 
     --in-path dir/of/test/imgs/ \
     --out-path dir/for/results/
 
-## Attributions/Thanks
+### Convert models
+To use the trained model for developing application on different platform, we need convert them to other format.
+The trained models is located to each folders for web, android, UWP usage.
+models in the root of this project is for ml5.js needed
+Chromebook/models is tensorflow lite for android app development
+Windows/models is ONNX for UWP development
+
+If you are going to train your own models, here is the instructions for you. enjoy it!!
+#### Web
+convert to ml5.js that is a high end api of tensorflow.js
+<pre>
+here is the instruction 
+second instruction 
+</pre>
+
+#### Android
+convert to tensorflow lite 
+<pre>
+instruction
+</pre>
+#### Win UWP
+convert to ONNX
+<pre>
+instruction
+</pre>
+### Attributions/Thanks
 Thanks all authors of following projects. 
 
 * The source code of this practice is major borrowed from [fast-style-transfer](https://github.com/lengstrom/fast-style-transfer) Github repository.
 * refer to some opinion in [Neural Style Transfer: A Review](https://arxiv.org/abs/1705.04058)
    
 
-## License
+### License
 
 This project is licensed under the MIT License, see the [LICENSE.md](LICENSE)
 
