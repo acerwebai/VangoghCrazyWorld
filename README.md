@@ -26,10 +26,40 @@ After that you can decided to deploy on various devices which running on to Wind
 
 ## Table of Contents (Optional)
 
-* Features
-* Getting Started
-* Prerequisites
-* ...
+-[Features](#Features)
+-[Getting Started](#Getting Started)
+    -[Getting the Code](#Getting the Code)
+    -[Get Pre-Trained Mode](#Get Pre-Trained Mode)
+    -[Prerequisites](#Prerequisites)
+    -[Create Virtual Environment](#Create Virtual Environment)
+    -[Installing](#Installing)
+    -[Get Pre-Trained Models](#Get Pre-Trained Models)
+    -[Run Pre-Trained Models](#Run Pre-Trained Models)
+-[Training](#Training)
+-[Evaluating](#Evaluating)
+-[Tuning parameters](#Tuning parameters)
+-[Transfer Taining, build your own model](#Transfer Taining, build your own model)
+    -[Find Your Checkpoint](#Find Your Checkpoint)
+    -[Freeze Model](#Freeze Model)
+-[Deployment](#Deployment)
+    -[Android APP](#Android APP)
+    -[UWP APP](#UWP APP)
+    -[Web pages](#Web pages)
+-[Implementation Details](#Implementation Details)
+    -[Paper](#Paper)
+    -[Framework](#Framework)
+    -[Model](#Model)
+    -[Optimization](#Optimization)
+-[Contributing](#Contributing)
+-[Versioning](#Versioning)
+-[Team](#Team)
+-[FAQ](#FAQ)
+-[Support](#Support)
+-[License](#License)
+-[Acknowledgments](#Acknowledgments)
+
+
+
 
 ## Features
 
@@ -52,6 +82,7 @@ git clone https://github.com/acerwebai/VangoghCrazyWorld.git
 ```
 
 ### Get Pre-Trained Model
+
 You can download the pre-trained models from here and should find the checkpoint files for each models
 
 ### Prerequisites
@@ -105,8 +136,17 @@ pip install -r requirements.txt
 
 Note: If your machine do not support nVidia GPU, please replace Tensorflow-gpu as Tensorflow inside the requirements.txt
 
+### Get Pre-Trained Models
+
+Before training, you need get dataset from [COCO](http://images.cocodataset.org/zips/test2014.zip) and pre-trained model VGG19 from [matconvnet](http://www.vlfeat.org/matconvnet/), or execute **setup.sh** to get dataset and pre-train model
+
+```
+./setup.sh
+ 
+```
 
 ### Run Pre-Trained Models
+
 Now, you have all the packages for running the pre-trained models
 You can have a trial run the starrynight style model that we have pre-trained, from the as following 
 
@@ -133,7 +173,7 @@ python style.py --style path/to/style/starrynight.jpg \
   --test-dir path/to/test/dir \
   --content-weight 1.5e1 \
   --checkpoint-iterations 1000 \
-  --batch-size 20
+  --batch-size 8
 ```
 
 where
@@ -151,7 +191,20 @@ where
 * --tv-weight: total variation regularization weight
 * --learning-rate: learning rate
 
-### Tuning parameters
+
+## Evaluating
+
+You can evaluate the trained models via
+
+```
+python evaluate.py --checkpoint path/to/style/starrynight \
+  --in-path dir/of/test/imgs/ \
+  --out-path dir/for/results/
+```
+
+
+## Tuning parameters
+
 The Loss function of the style transfer can be illustrated as
 
 ``` 
@@ -163,37 +216,31 @@ Therefore, we can tuning the total loss via
 * --content-weight
 * --style-weight
 
-For more tuning techniques, please refer to [this medium post](https://towardsdatascience.com/practical-techniques-for-getting-style-transfer-to-work-19884a0d69eb) 
+Please see [Implementation Details] (#Implementation Details) for the techniques we have found.
+You can refer to [this medium post](https://towardsdatascience.com/practical-techniques-for-getting-style-transfer-to-work-19884a0d69eb) as well to see other techniques
 
 
-## Testing
-
-You can evaluate the trained models via
-
-```
-python evaluate.py --checkpoint path/to/style/starrynight \
-  --in-path dir/of/test/imgs/ \
-  --out-path dir/for/results/
-```
 
 ## Transfer Taining, build your own model
 
 You can change the style image whatever you would like to train
+You can change any parameters and see how it changed and make it reach to your design
 
 ```
 python style.py --style path/to/style/img.jpg \
   --checkpoint-dir checkpoint/path \
   --test path/to/test/img.jpg \
   --test-dir path/to/test/dir \
+  --style-weight 7.5e2 \
   --content-weight 1.5e1 \
   --checkpoint-iterations 1000 \
-  --batch-size 20
+  --batch-size 8
 ```
 ### Find Your Checkpoint
 
 You should find the checkpoint @--checkpoint-dir folder
 
-### Frozen Model
+### Freeze Model
 
 You should find the checkpoint @--checkpoint-dir folder
 
@@ -203,13 +250,11 @@ We need frozen model for deployment to various devices in Windows or Android, or
 
 ## Deployment
 
-For the deployment, please follow the instructions below
-
-## Built With
+For the deployment, please follow the instructions below and buit with
 
 ### Android APP
 See [Android Application](https://github.com/acerwebai/VangoghCrazyWorld/blob/master/Chromebook/README.md)
-### Windows APP
+### UWP APP
 See [Windows_README.md](Windows_README.md)
 ### Web pages
 See [Web_README.md](Web.md)
@@ -281,7 +326,7 @@ Following are some example that training target style by parameters, content wei
 
 ### Model
 
-VGG16
+VGG19
 
 ### Optimization
 
@@ -317,8 +362,9 @@ This project is licensed under the Apache License 2.0, see the [LICENSE.md](LICE
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* ...
+Thanks all authors of following projects. 
+
+* The source code of this practice is major borrowed from [fast-style-transfer](https://github.com/lengstrom/fast-style-transfer) Github repository.
+* refer to some opinion in [Neural Style Transfer: A Review](https://arxiv.org/abs/1705.04058)
 
 
