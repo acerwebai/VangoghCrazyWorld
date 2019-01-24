@@ -96,6 +96,9 @@ def ffwd(data_in, paths_out, checkpoint_dir, device_t='/gpu:0', batch_size=4):
             ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
             if ckpt and ckpt.model_checkpoint_path:
                 saver.restore(sess, ckpt.model_checkpoint_path)
+                #calvin - create pbtxt file
+                tf.train.write_graph(sess.graph.as_graph_def(),checkpoint_dir,'save_graph.pbtxt',True)
+                #end
             else:
                 raise Exception("No checkpoint found...")
         else:
