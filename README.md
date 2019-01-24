@@ -26,26 +26,26 @@ After that you can decided to deploy on various devices which running on to Wind
 
 **Table of Contents**
 
--[Features](#Features)
--[Getting Started](#Getting Started)
-   -[Getting the Code](#Getting the Code)
-   -[Get Pre-Trained Mode](#Get Pre-Trained Mode)
+- [Features](#Features)
+- [Getting Started](#Getting-Started)
+   -[Getting the Code](#Getting-the-Code)
+   -[Get Pre-Trained Mode](#Get-Pre-Trained-Mode)
    -[Prerequisites](#Prerequisites)
-   -[Create Virtual Environment](#Create Virtual Environment)
+   -[Create Virtual Environment](#Create-Virtual-Environment)
    -[Installing](#Installing)
-   -[Get Pre-Trained Models](#Get Pre-Trained Models)
-   -[Run Pre-Trained Models](#Run Pre-Trained Models)
+   -[Get Pre-Trained Models](#Get-Pre-Trained-Models)
+   -[Run Pre-Trained Models](#Run-Pre-Trained-Models)
 -[Training](#Training)
 -[Evaluating](#Evaluating)
--[Tuning parameters](#Tuning parameters)
--[Transfer Taining, build your own model](#Transfer Taining, build your own model)
-   -[Find Your Checkpoint](#Find Your Checkpoint)
-   -[Freeze Model](#Freeze Model)
+-[Tuning Parameters](#Tuning-Parameters)
+-[Transfer Taining, build your own model](#Transfer-Taining,-build-your-own-model)
+   -[Find Your Checkpoint](#Find-Your-Checkpoint)
+   -[Freeze Model](#Freeze-Model)
 -[Deployment](#Deployment)
-   -[Android APP](#Android APP)
-   -[UWP APP](#UWP APP)
-   -[Web pages](#Web pages)
--[Implementation Details](#Implementation Details)
+   -[Android APP](#Android-APP)
+   -[UWP APP](#UWP-APP)
+   -[Web Pages](#Web-Pages)
+-[Implementation Details](#Implementation-Details)
    -[Paper](#Paper)
    -[Framework](#Framework)
    -[Model](#Model)
@@ -203,7 +203,7 @@ python evaluate.py --checkpoint path/to/style/starrynight \
 ```
 
 
-## Tuning parameters
+## Tuning Parameters
 
 The Loss function of the style transfer can be illustrated as
 
@@ -256,7 +256,7 @@ For the deployment, please follow the instructions below and buit with
 See [Android Application](https://github.com/acerwebai/VangoghCrazyWorld/blob/master/Chromebook/README.md)
 ### UWP APP
 See [Windows_README.md](Windows_README.md)
-### Web pages
+### Web Pages
 See [Web_README.md](Web.md)
 
 ## Implementation Details
