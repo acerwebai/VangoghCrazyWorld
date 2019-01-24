@@ -223,18 +223,17 @@ Here are the source code for you practice on your local machine.
 We also share some experience on how to fine tune the hyperparameter to gain a more suitable result of transfer target contents to as Vangogh's style.<br>
 This is implemented by TensorFlow.
 
-### Implement Details
 
 Our implemetation is base on [fast-style-transfer](https://github.com/lengstrom/fast-style-transfer) and revise pooling function, maxpooling -> avgpooling. here is the pooling concept for your reference.
 <p align = 'center'>
-<img src = 'images/poolings.jpg' height = '246px'>
+<img src = 'Practice/images/poolings.jpg' height = '246px'>
 </p>
 
 Because VGG19 network get the feature for style image by resizing image size to 256x256, we found revising style image closed to 256x256. Then we can get hyperparameter as more close to style when apply style to target contents. for example:
 
 <table><tr><td>Content</td><td>Style</td><td>Result</td></tr>
 <tr><td><img src = 'Practice/examples/content/sunset.jpg' height = '180px'> <p> CC BY 2.0 by <a href https://ccsearch.creativecommons.org/photos/200fcf16-fd90-400b-9e7e-ead138e2f67d >Bryce Edwards</a></td><td><img src = 'Practice/examples/style/starrynight-300-255.jpg' height = '180px'><p> starry night with 300x255</td><td><img src = 'Practice/examples/results/avg_300_255-7.0_1000.png' height = '246px'></td></tr>
-<tr><td><img src = 'examples/content/sunset.jpg' height = '180px'> <p> CC BY 2.0 by <a href https://ccsearch.creativecommons.org/photos/200fcf16-fd90-400b-9e7e-ead138e2f67d >Bryce Edwards</a></td><td><img src = 'Practice/examples/style/Starry_Night.jpg' height = '180px'><p> starry night with 1280x1014</td><td><img src = 'Practice/examples/results/avg_full-7.0_1000.png' height = '246px'></td></tr>
+<tr><td><img src = 'Practice/examples/content/sunset.jpg' height = '180px'> <p> CC BY 2.0 by <a href https://ccsearch.creativecommons.org/photos/200fcf16-fd90-400b-9e7e-ead138e2f67d >Bryce Edwards</a></td><td><img src = 'Practice/examples/style/Starry_Night.jpg' height = '180px'><p> starry night with 1280x1014</td><td><img src = 'Practice/examples/results/avg_full-7.0_1000.png' height = '246px'></td></tr>
 </table>
   
 
