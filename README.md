@@ -24,70 +24,39 @@ We would like to bring you to Vangogh Crazy World, insight the sample code, you 
 
 After that you can decided to deploy on various devices which running on to Windows or Android and even OS independent web pages.
 
-## Table of Contents
+**Table of Contents**
 
 - [Features](#Features)
-
 - [Getting Started](#Getting-Started)
-
-   -[Getting the Code](#Getting-the-Code)
-   
-   -[Get Pre-Trained Mode](#Get-Pre-Trained-Mode)
-   
-   -[Prerequisites](#Prerequisites)
-   
+   -[Getting the Code](#Getting-the-Code)  
+   -[Get Pre-Trained Mode](#Get-Pre-Trained-Mode)   
+   -[Prerequisites](#Prerequisites)  
    -[Create Virtual Environment](#Create-Virtual-Environment)
-   
    -[Installing](#Installing)
-   
    -[Get Pre-Trained Models](#Get-Pre-Trained-Models)
-   
-   -[Run Pre-Trained Models](#Run-Pre-Trained-Models)
-   
+   -[Run Pre-Trained Models](#Run-Pre-Trained-Models)  
 -[Training](#Training)
-
 -[Evaluating](#Evaluating)
-
 -[Tuning Parameters](#Tuning-Parameters)
-
 -[Transfer Taining, build your own model](#Transfer-Taining,-build-your-own-model)
-
-   -[Find Your Checkpoint](#Find-Your-Checkpoint)
-   
-   -[Freeze Model](#Freeze-Model)
-   
+   -[Find Your Checkpoint](#Find-Your-Checkpoin) 
+   -[Freeze Model](#Freeze-Model) 
 -[Deployment](#Deployment)
-
    -[Android APP](#Android-APP)
-   
    -[UWP APP](#UWP-APP)
-   
    -[Web Pages](#Web-Pages)
-   
 -[Implementation Details](#Implementation-Details)
-
    -[Paper](#Paper)
-   
    -[Framework](#Framework)
-   
-   -[Model](#Model)
-   
+   -[Model](#Model) 
    -[Optimization](#Optimization)
-   
 -[Contributing](#Contributing)
-
 -[Versioning](#Versioning)
-
 -[Team](#Team)
-
 -[FAQ](#FAQ)
-
 -[Support](#Support)
-
 -[License](#License)
-
 -[Acknowledgments](#Acknowledgments)
-
 
 
 
