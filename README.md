@@ -28,8 +28,8 @@ After that you can decided to deploy on various devices which running on to Wind
 
 - [Features](#Features)
 - [Getting Started](#Getting-Started)
-   -[Getting the Code](#Getting-the-Code)  
-   -[Get Pre-Trained Mode](#Get-Pre-Trained-Mode)   
+	-[Getting the Code](#Getting-the-Code)  
+	-[Get Pre-Trained Mode](#Get-Pre-Trained-Mode)   
    -[Prerequisites](#Prerequisites)  
    -[Create Virtual Environment](#Create-Virtual-Environment)
    -[Installing](#Installing)
