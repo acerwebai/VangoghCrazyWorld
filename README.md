@@ -26,10 +26,10 @@ After that you can decided to deploy on various devices which running on to Wind
 
 **Table of Contents**
 
-- [Features](#features)
-- [Getting Started](#getting-started)
-	-[Getting the Code](#getting-the-code)  
-	-[Get Pre-Trained Mode](#get-pre-trained-model)   
+*[Features](#features)
+*[Getting Started](#getting-started)
+** [Getting the Code](#getting-the-code)  
+** [Get Pre-Trained Mode](#get-pre-trained-model)   
    -[Prerequisites](#prerequisites)  
    -[Create Virtual Environment](#create-virtual-environment)
    -[Installing](#installing)
