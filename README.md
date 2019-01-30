@@ -278,15 +278,53 @@ frozen.pb
 
 ## Before Deployment
 
-Before deployment, we need to prepare the appropriate models for each applications
+Before deployment, coverting models for inferencing in various applications is needed
 
 ### Convert Models
 
-Coverting models for inferencing in various applications is important, due to the model will be optimized during the converting
+There have several reasons that we need to conver the model from frozen pb
+* Application: different application need different model file, for example, UMP via WinML only support ONNX model, web application need to be converted to be tensorflow.js
+* Optimization: If we want to deploy the model to less computing devices, for example: Android applications running on Chromebook or Android phone 
 
 ### TFLITE for Android APP
 
+We use tensorflow lite converter to convert the frozen pb
+
+```
+
+tflite_convert \
+  --graph_def_file=/home/acer/fast-style-transfer/ckpt/doesburg_20190116/frozen.pb \
+  --output_file=/home/acer/fast-style-transfer/ckpt/doesburg_20190116/shape_1_256_256_3.tflite \
+  --input_format=TENSORFLOW_GRAPHDEF \
+  --output_format=TFLITE \
+  --input_shape=1,256,256,3 \
+  --input_array=X_content \
+  --output_array=add_37 \
+  --inference_type=FLOAT \
+  --input_data_type=FLOAT
+
+```
+
+Note: tflite_convert support squredifference operator after Tensorflow 1.13.0.dev20190117, you need to use Tensorflow version greater than 1.13.0.dev20190117 to avoid the converting error
+
+After that, you can use tflite model for inference on Android application
+
 ### ONNX for UWP APP
+
+You need to convert the model via onnx2
+
+```
+
+python -m tf2onnx.convert\
+    --input /home/acer/fast-style-transfer/ckpt/doesburg_20190115_test/frozen.pb\
+    --inputs X_content:0\
+    --outputs add_37:0\
+    --output /home/acer/fast-style-transfer/ckpt/doesburg_20190115_test/model.onnx\
+    --verbose \
+    --fold_const\
+    --inputs-as-nchw X_content:0,add_37:0
+    
+```
 
 ### Tensorflow.js for Web Page
 
