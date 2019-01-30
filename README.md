@@ -247,6 +247,17 @@ We use the Tensorflow [freeze_graph.py](https://github.com/tensorflow/tensorflow
 
 We need frozen model for deployment to various devices in Windows or Android, or even OS independent web pages
 
+## Before Deployment
+
+### Convert Models
+
+### TFLITE for Android APP
+
+### ONNX for UWP APP
+
+### Tensorflow.js for Web Page
+
+
 ## Deployment
 
 For the deployment, please follow the instructions below and buit with
