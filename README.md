@@ -65,6 +65,45 @@ After that you can decided to deploy on various devices which running on to Wind
 
 
 
+* [Features](#features)
+  * [Getting Started](#getting-started)
+    + [Getting the Code](#getting-the-code)
+    + [Get Pre-Trained Model](#get-pre-trained-model)
+    + [Prerequisites](#prerequisites)
+    + [Create Virtual Environment](#create-virtual-environment)
+    + [Installing](#installing)
+    + [Get Pre-Trained Models](#get-pre-trained-models)
+    + [Run Pre-Trained Models](#run-pre-trained-models)
+  * [Training](#training)
+  * [Evaluating](#evaluating)
+  * [Tuning Parameters](#tuning-parameters)
+  * [Transfer Taining, build your own model](#transfer-taining--build-your-own-model)
+    + [Find Your Checkpoint](#find-your-checkpoint)
+    + [Freeze Model](#freeze-model)
+  * [Before Deployment](#before-deployment)
+    + [Convert Models](#convert-models)
+    + [TFLITE for Android APP](#tflite-for-android-app)
+    + [ONNX for UWP APP](#onnx-for-uwp-app)
+    + [Tensorflow.js for Web Page](#tensorflowjs-for-web-page)
+  * [Deployment](#deployment)
+    + [Android APP](#android-app)
+    + [UWP APP](#uwp-app)
+    + [Web Pages](#web-pages)
+  * [Implementation Details](#implementation-details)
+    + [Paper](#paper)
+    + [Framework](#framework)
+    + [Model](#model)
+    + [Optimization](#optimization)
+  * [Contributing](#contributing)
+  * [Versioning](#versioning)
+  * [Team](#team)
+  * [FAQ](#faq)
+  * [Support](#support)
+  * [License](#license)
+  * [Acknowledgments](#acknowledgments)
+
+
+
 ## Features
 
 In this project, it will provide the following packages
