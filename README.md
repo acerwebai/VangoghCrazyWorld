@@ -246,14 +246,43 @@ You should find the checkpoint @--checkpoint-dir folder
 ### Freeze Model
 
 You should find the checkpoint @--checkpoint-dir folder
+We need frozen model for deployment to various devices in Windows or Android, or even OS independent web pages.
+You can use the Tensorflow [freeze_graph.py](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py) to make it frozen
 
-We use the Tensorflow [freeze_graph.py](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py) to make it frozen
+```
+freeze_graph \
+--input_graph=/home/acer/fast-style-transfer/ckpt/your_chpt/fns.ckpt/save_graph.pb \
+--input_checkpoint=/home/acer/fast-style-transfer/ckpt/your_chpt/fns.ckpt \
+--output_graph=/home/acer/fast-style-transfer/ckpt/doesburg_20181229/fns.ckpt/frozen.pb \
+--input_binary=True \
+--output_node_names=add_37 
 
-We need frozen model for deployment to various devices in Windows or Android, or even OS independent web pages
+```
+This will be the batch and shape while your training
+
+We made a utility to load the ckpt and make it a frozen model pb with the batch size is 1 shape you wourld like to have for inference
+
+```
+python evaluate_plus_save_all_pb.py --checkpoint /home/acer/fast-style-transfer/ckpt/640_480 \
+  --in-path 640_480.jpg \
+  --out-path 640_480_converted.jpg
+  
+```
+You will find 3 files for your inference purpose
+
+```
+save_graph.pb
+save_graph.pbtxt
+frozen.pb
+```
 
 ## Before Deployment
 
+Before deployment, we need to prepare the appropriate models for each applications
+
 ### Convert Models
+
+Coverting models for inferencing in various applications is important, due to the model will be optimized during the converting
 
 ### TFLITE for Android APP
 
