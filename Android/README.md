@@ -26,10 +26,18 @@ Git clone xxxxxxxx
 
 The APK file will be generated on the folder /xxx/xxx
 
-## Copy the APK file into your working folder on chromebook device. ex. /Download
+## Get the APK file
 
-## Double click the APK file, then the install process will be executed, after the process completed, your APK will be shown on the APP list of chromebook.
+Copy the APK file into your working folder on chromebook device. ex. /Download
 
-## Launch this APK on your chromebook APP list.
+## Install your APK
 
-## You will see the AP is executed as the web site shown.
+Double click the APK file, then the install process will be executed, after the process completed, your APK will be shown on the APP list of chromebook.
+
+## Launch your APK
+
+Launch this APK on your chromebook APP list.
+
+## Enjoy it!
+
+You will see the AP is executed as the web site shown.
