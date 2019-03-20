@@ -57,10 +57,9 @@ You can download the pre-trained models from here and should find the checkpoint
 	* cuDNN v7.3.0: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
 	* Note: CUDA and cuDNN has [dependencies](https://docs.nvidia.com/deeplearning/sdk/cudnn-support-matrix/index.html)
 
-*Tensorflow 1.12.0
+* Tensorflow 1.12.0
 
-*Pillow 3.4.2, scipy 0.18.1, numpy 1.11.2, ffmpeg 3.1.3  or later version
-
+* Pillow 3.4.2, scipy 0.18.1, numpy 1.11.2, ffmpeg 3.1.3  or later version
 
 ### Create Virtual Environment
 
@@ -120,8 +119,9 @@ You can have a trial run the starrynight style model that we have pre-trained, f
 
 ```
 python evaluate.py --data-format NHWC --num-base-channels 8 --checkpoint path/to/style/starrynight \
-  --in-path dir/of/test/imgs/ \
-  --out-path dir/for/results/
+  --in-path dir/of/test/imgs/  \
+  --out-path dir/for/results/  \
+  --allow-different-dimensions
  
 ```
 
