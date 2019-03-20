@@ -17,8 +17,9 @@ def get_img(src, img_size=False):
    if not (len(img.shape) == 3 and img.shape[2] == 3):
        img = np.dstack((img,img,img))
    if img_size != False:
-       #print("image filename : %s  , image shape: %s" % (src,img.shape))  # calvin add for trace
        img = scipy.misc.imresize(img, img_size)
+
+   #print ("get_img() - img:{}".format(img))
    return img
 
 def exists(p, msg):

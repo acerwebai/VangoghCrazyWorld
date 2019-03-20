@@ -7,6 +7,14 @@ from argparse import ArgumentParser
 from utils import save_img, get_img, exists, list_files
 import evaluate
 
+#mcky
+'''
+python style.py --checkpoint-dir ckpts --style examples/style/la_muse.jpg --train-path data/train2014 --test examples/content/chicago.jpg --test-dir test --vgg-path data/imagenet-vgg-verydeep-19.mat --checkpoint-iterations 100 --style-weight 1e10
+
+Windows:
+python style.py --checkpoint-dir ckpts --style examples\style\la_muse.jpg --train-path data\train2014 --test examples\content\chicago.jpg --test-dir test --vgg-path data\imagenet-vgg-verydeep-19.mat --checkpoint-iterations 100 --style-weight 1e10
+'''
+
 CONTENT_WEIGHT = 7.5e0
 STYLE_WEIGHT = 1e2
 TV_WEIGHT = 2e2
@@ -16,7 +24,7 @@ NUM_EPOCHS = 2
 CHECKPOINT_DIR = 'checkpoints'
 CHECKPOINT_ITERATIONS = 2000
 VGG_PATH = 'data/imagenet-vgg-verydeep-19.mat'
-TRAIN_PATH = 'data/train2014'    #'data/train2014' -calvin revise for new dataset
+TRAIN_PATH = 'data/train2014'
 BATCH_SIZE = 4
 DEVICE = '/gpu:0'
 FRAC_GPU = 1
@@ -85,6 +93,20 @@ def build_parser():
                         help='learning rate (default %(default)s)',
                         metavar='LEARNING_RATE', default=LEARNING_RATE)
 
+
+    # more cli params
+    parser.add_argument('--data-format',
+                        dest='data_format', 
+                        type=str,
+                        default='NHWC',
+                        help='data format, NHWC or NCHW.  default is NHWC')
+    
+    parser.add_argument('--num-base-channels',
+                        dest='num_base_channels', 
+                        type=int,
+                        default=32,
+                        help='number of base channels in 1st layer.  default is 32')
+
     return parser
 
 def check_opts(opts):
@@ -104,6 +126,10 @@ def check_opts(opts):
     assert opts.tv_weight >= 0
     assert opts.learning_rate >= 0
 
+    # more cli params
+    #print ("data-format:{}".format(opts.data_format))
+    #print ("num-base-channels:{}".format(opts.num_base_channels))
+
 def _get_files(img_dir):
     files = list_files(img_dir)
     return [os.path.join(img_dir,x) for x in files]
@@ -115,23 +141,50 @@ def main():
     check_opts(options)
 
     style_target = get_img(options.style)
+
+
     if not options.slow:
         content_targets = _get_files(options.train_path)
     elif options.test:
         content_targets = [options.test]
 
-    #define a path with weight
-    weight_path = '%s/%s_%s_%s_%s' % (options.checkpoint_dir,options.test.split('/')[-1],options.style.split('/')[-1],options.content_weight,options.style_weight)
-    #os.mkdir(weight_path)
+    # a simpler folder name format
+    #   [style image name]_[data format]_[num base channels]_[content weight]_[style weight]_[learning rate]
+    style_image_str = os.path.basename(options.style)
+    style_image_str = os.path.splitext(style_image_str)[0]
+    content_weight_str = np.format_float_scientific(options.content_weight).replace('.','').replace('+','')
+    style_weight_str = np.format_float_scientific(options.style_weight).replace('.','').replace('+','')
+
+    folder_name = style_image_str + "-" + options.data_format + "_nbc" + str(options.num_base_channels
+                                    ) + "_bs" + str(options.batch_size) + "_" + content_weight_str + "_" + style_weight_str + "_" + str(options.learning_rate)
+
+    # create checkpoint and test image folders
+    ckpt_dir_path = os.path.join(options.checkpoint_dir, folder_name)
+    test_dir_path = os.path.join(options.test_dir, folder_name)
+
+    print ("ckpt_dir_path:{}".format(ckpt_dir_path))
+    print ("test_dir_path:{}".format(test_dir_path))
+
+    if not os.path.isdir(ckpt_dir_path):
+        os.mkdir (ckpt_dir_path)
+    if not os.path.isdir(test_dir_path):
+        os.mkdir (test_dir_path)
+    
+    options.checkpoint_dir = ckpt_dir_path
+    options.test_dir = test_dir_path
 
     kwargs = {
         "slow":options.slow,
         "epochs":options.epochs,
         "print_iterations":options.checkpoint_iterations,
         "batch_size":options.batch_size,
- #       "save_path":os.path.join(options.checkpoint_dir,'fns.ckpt'),
-        "save_path":os.path.join(weight_path,'fns.ckpt'),
-        "learning_rate":options.learning_rate
+        "save_path":os.path.join(options.checkpoint_dir,'fns.ckpt'),
+        #"save_path":os.path.join(options.checkpoint_dir,folder_name,'fns.ckpt'),
+        "learning_rate":options.learning_rate,
+
+        # more cli params
+        "data_format":options.data_format,
+        "num_base_channels":options.num_base_channels
     }
 
     if options.slow:
@@ -146,8 +199,15 @@ def main():
         options.content_weight,
         options.style_weight,
         options.tv_weight,
-        options.vgg_path
+        options.vgg_path,
+
+        # more cli params
+        #options.data_format,
+        #options.num_base_channels
     ]
+
+    #print ("kwargs:{}".format(kwargs))
+    #print ("args:{}".format(*args))
 
     for preds, losses, i, epoch in optimize(*args, **kwargs):
         style_loss, content_loss, tv_loss, loss = losses
@@ -157,22 +217,17 @@ def main():
         print('style: %s, content:%s, tv: %s' % to_print)
         if options.test:
             assert options.test_dir != False
-            #calvin - make subfolder for output files - start
-            output_path = '%s/%s_%s' % (options.test_dir,options.test.split('/')[-1],options.style.split('/')[-1])
-            if not os.path.isdir(output_path):
-                os.mkdir(output_path)
-            #calin - end
-
-            preds_path = '%s/%s_%s_%s_%s_%s.png' % (output_path,options.content_weight,options.style_weight,epoch,i,style_loss)
+            preds_path = '%s/%s_%s.png' % (options.test_dir,epoch,i)
             if not options.slow:
-                ckpt_dir = os.path.dirname(weight_path)
-                evaluate.ffwd_to_img(options.test,preds_path,
-                                     weight_path)
-              #  ckpt_dir = os.path.dirname(options.checkpoint_dir)   # change the checkpoint folder as dynamic
-              #  evaluate.ffwd_to_img(options.test,preds_path,
-              #                       options.checkpoint_dir)
+                ckpt_dir = os.path.dirname(options.checkpoint_dir)
+                evaluate.ffwd_to_img(options.test, preds_path,
+                                     options.checkpoint_dir,
+                                     device='/gpu:0', #mcky, force to use GPU, or would have 'Conv2DCustomBackpropInputOp only supports NHWC.' error.
+                                     data_format=options.data_format, num_base_channels=options.num_base_channels
+                                     )
             else:
                 save_img(preds_path, img)
+    
     ckpt_dir = options.checkpoint_dir
     cmd_text = 'python evaluate.py --checkpoint %s ...' % ckpt_dir
     print("Training complete. For evaluation:\n    `%s`" % cmd_text)

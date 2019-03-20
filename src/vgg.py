@@ -5,7 +5,7 @@ import numpy as np
 import scipy.io
 import pdb
 
-MEAN_PIXEL = np.array([123.68 ,  116.779,  103.939]) #np.array([ 123.68 ,  116.779,  103.939])  - calvin revise by refer to "neural style change"
+MEAN_PIXEL = np.array([ 123.68 ,  116.779,  103.939])
 
 def net(data_path, input_image):
     layers = (
@@ -56,10 +56,9 @@ def _conv_layer(input, weights, bias):
 
 
 def _pool_layer(input):
-    return tf.nn.avg_pool(input, ksize=(1, 2, 2, 1), strides=(1, 2, 2, 1),    #calvin revise to avg_pool
-            padding='SAME')
     #return tf.nn.max_pool(input, ksize=(1, 2, 2, 1), strides=(1, 2, 2, 1),
-    #        padding='SAME')
+    return tf.nn.avg_pool(input, ksize=(1, 2, 2, 1), strides=(1, 2, 2, 1),   #change to avg pooling for Vangogh's painting
+            padding='SAME')
 
 
 def preprocess(image):

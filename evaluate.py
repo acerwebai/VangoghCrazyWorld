@@ -14,11 +14,27 @@ import numpy
 from moviepy.video.io.VideoFileClip import VideoFileClip
 import moviepy.video.io.ffmpeg_writer as ffmpeg_writer
 
-BATCH_SIZE = 4
+#BATCH_SIZE = 4
+BATCH_SIZE = 4 #mcky
 DEVICE = '/gpu:0'
 
+# example for eval:
+#    python evaluate.py --data-format NHWC --num-base-channels 16 --checkpoint ckpts/udnie-nhwc_nf16_b01_1e2 --in-path examples/content/chicago.jpg --out-path chicago_undie.jpg
+#
+#  to execute and generate .onnx model:
+#  1. eval and generate 'graph.pbtxt' and 'saver' files in 'tf-models' folder.  the folder name in 'tf-models' folder is checkpoint folder name.
+#       python evaluate.py --data-format NHWC --num-base-channels 16 --checkpoint ckpts/udnie-nhwc_nf16_b01_1e2 --in-path examples/content/chicago.jpg --out-path chicago_undie.jpg
+#
+#  2. freeze_graph to create .pb file
+#       python -m tensorflow.python.tools.freeze_graph --input_graph=tf-models/udnie-nhwc_nf16_b01_1e2/graph.pbtxt --input_checkpoint=tf-models/udnie-nhwc_nf16_b01_1e2/saver --output_graph=udnie-nhwc_nf16_b01_1e2.pb --output_node_names="output"
+#
+#  3. tf2onnx to convert .pb file to .onnx file in tf2onnx_models folder (todo: validate again with 'data-format' set to NCHW)
+#       python -m tf2onnx.convert --input muse_frozen.pb --inputs img_placeholder --outputs add_37:0 --opset 8 --output tf2onnx_models/la_muse.onnx
+#
 
-def ffwd_video(path_in, path_out, checkpoint_dir, device_t='/gpu:0', batch_size=4):
+def ffwd_video(path_in, path_out, checkpoint_dir, device_t='/gpu:0', batch_size=4,
+                data_format='NHWC', num_base_channels=32 # more cli params
+                ):
     video_clip = VideoFileClip(path_in, audio=False)
     video_writer = ffmpeg_writer.FFMPEG_VideoWriter(path_out, video_clip.size, video_clip.fps, codec="libx264",
                                                     preset="medium", bitrate="2000k",
@@ -34,7 +50,21 @@ def ffwd_video(path_in, path_out, checkpoint_dir, device_t='/gpu:0', batch_size=
         img_placeholder = tf.placeholder(tf.float32, shape=batch_shape,
                                          name='img_placeholder')
 
-        preds = transform.net(img_placeholder)
+        #preds = transform.net(img_placeholder)
+
+        if data_format == 'NHWC':
+            #NHWC path
+            preds = transform.net(img_placeholder, data_format=data_format, num_base_channels=num_base_channels)
+        else:
+            #NCHW path
+            img_placeholder_nchw = tf.transpose(img_placeholder, [0,3,1,2])
+            preds_nchw = transform.net(img_placeholder_nchw, data_format=data_format, num_base_channels=num_base_channels)
+            preds = tf.transpose(preds_nchw,[0,2,3,1])
+
+        # add output node
+        preds = tf.identity(preds, "output")
+        #print("tf.identity: {}".format(preds))
+
         saver = tf.train.Saver()
         if os.path.isdir(checkpoint_dir):
             ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
@@ -69,12 +99,16 @@ def ffwd_video(path_in, path_out, checkpoint_dir, device_t='/gpu:0', batch_size=
 
 
 # get img_shape
-def ffwd(data_in, paths_out, checkpoint_dir, device_t='/gpu:0', batch_size=4):
+def ffwd(data_in, paths_out, checkpoint_dir, device_t='/gpu:0', batch_size=4,
+        data_format='NHWC', num_base_channels=32 # more cli params
+        ):
     assert len(paths_out) > 0
     is_paths = type(data_in[0]) == str
     if is_paths:
         assert len(data_in) == len(paths_out)
         img_shape = get_img(data_in[0]).shape
+        #img_shape = get_img(data_in[0],(256,256,3)).shape #mcky, make the input size the same as training size
+        #img_shape = get_img(data_in[0],(128,128,3)).shape #mcky, MX150
     else:
         assert data_in.size[0] == len(paths_out)
         img_shape = X[0].shape
@@ -89,21 +123,39 @@ def ffwd(data_in, paths_out, checkpoint_dir, device_t='/gpu:0', batch_size=4):
         batch_shape = (batch_size,) + img_shape
         img_placeholder = tf.placeholder(tf.float32, shape=batch_shape,
                                          name='img_placeholder')
+        
+        #mcky
+        print ("---------- ffwd() - transform.net() ----------")
 
-        preds = transform.net(img_placeholder)
+        if data_format == 'NHWC':
+            #NHWC path
+            preds = transform.net(img_placeholder, data_format=data_format, num_base_channels=num_base_channels)
+        else:
+            #NCHW path
+            img_placeholder_nchw = tf.transpose(img_placeholder, [0,3,1,2])
+            preds_nchw = transform.net(img_placeholder_nchw, data_format=data_format, num_base_channels=num_base_channels)
+            preds = tf.transpose(preds_nchw,[0,2,3,1])
+        
+        # add output node
+        preds = tf.identity(preds, "output")
+        #print("tf.identity: {}".format(preds))
+        
+        #mcky, Variables are printed here
+        #for v in tf.global_variables():
+        #    print (v)
+        
+        print ("---------- tf.train.Saver() ----------")
         saver = tf.train.Saver()
         if os.path.isdir(checkpoint_dir):
             ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
             if ckpt and ckpt.model_checkpoint_path:
-                saver.restore(sess, ckpt.model_checkpoint_path)
-                #calvin - create pbtxt file
-                tf.train.write_graph(sess.graph.as_graph_def(),checkpoint_dir,'save_graph.pbtxt',True)
-                #end
+                saver.restore(sess, ckpt.model_checkpoint_path) #mcky, restore variable error if image input size is not the same as size in training.
             else:
                 raise Exception("No checkpoint found...")
         else:
             saver.restore(sess, checkpoint_dir)
 
+        print ("---------- num_iters ----------")
         num_iters = int(len(paths_out)/batch_size)
         for i in range(num_iters):
             pos = i * batch_size
@@ -113,6 +165,10 @@ def ffwd(data_in, paths_out, checkpoint_dir, device_t='/gpu:0', batch_size=4):
                 X = np.zeros(batch_shape, dtype=np.float32)
                 for j, path_in in enumerate(curr_batch_in):
                     img = get_img(path_in)
+
+                    #print ("get_img():{}".format(img))#mcky
+                    #img = get_img(path_in,(256,256,3)) #mcky, make the input size the same as training size
+                    #img = get_img(path_in,(128,128,3)) #mcky, MX150
                     assert img.shape == img_shape, \
                         'Images have different dimensions. ' +  \
                         'Resize images or use --allow-different-dimensions.'
@@ -122,20 +178,47 @@ def ffwd(data_in, paths_out, checkpoint_dir, device_t='/gpu:0', batch_size=4):
 
             _preds = sess.run(preds, feed_dict={img_placeholder:X})
             for j, path_out in enumerate(curr_batch_out):
+                #print ("_preds[j]:{}".format(_preds[j]))#mcky
                 save_img(path_out, _preds[j])
+                
+                # mcky, create a folder under 'tf-models'
+                tf_models_dir = "tf-models"
+                if not os.path.isdir(tf_models_dir):
+                    os.mkdir (tf_models_dir)
+
+                tf_model_dirname = os.path.basename(checkpoint_dir)
+                tf_model_dirpath = os.path.join(tf_models_dir, tf_model_dirname)
+                if not os.path.isdir(tf_model_dirpath):
+                    os.mkdir (tf_model_dirpath)
+
+                # mcky, save to checkpoint files
+                print ("save saver...")
+                tf_model_fpath = os.path.join(tf_model_dirpath, "saver")
+                saver.save(sess, tf_model_fpath)
+            
+                # mcky, save graph to .pbtxt files
+                print ("save graph...")
+                graph_def = tf.get_default_graph().as_graph_def(add_shapes=True)  # 'add_shapes' adds '_output_shapes' attribute to every node.  needed for tf2onnx
+                tf.train.write_graph(graph_def, tf_model_dirpath, "graph.pbtxt")
                 
         remaining_in = data_in[num_iters*batch_size:]
         remaining_out = paths_out[num_iters*batch_size:]
     if len(remaining_in) > 0:
         ffwd(remaining_in, remaining_out, checkpoint_dir, 
-            device_t=device_t, batch_size=1)
+            device_t=device_t, batch_size=1,
+            data_format=data_format, num_base_channels=num_base_channels)
 
-def ffwd_to_img(in_path, out_path, checkpoint_dir, device='/cpu:0'):
+def ffwd_to_img(in_path, out_path, checkpoint_dir, device='/cpu:0',
+                data_format='NHWC', num_base_channels=32 # more cli params
+                ):
     paths_in, paths_out = [in_path], [out_path]
-    ffwd(paths_in, paths_out, checkpoint_dir, batch_size=1, device_t=device)
+    ffwd(paths_in, paths_out, checkpoint_dir, batch_size=1, device_t=device,
+        data_format=data_format, num_base_channels=num_base_channels)
 
 def ffwd_different_dimensions(in_path, out_path, checkpoint_dir, 
-            device_t=DEVICE, batch_size=4):
+            device_t=DEVICE, batch_size=4,
+            data_format='NHWC', num_base_channels=32 # more cli params
+            ):
     in_path_of_shape = defaultdict(list)
     out_path_of_shape = defaultdict(list)
     for i in range(len(in_path)):
@@ -147,7 +230,8 @@ def ffwd_different_dimensions(in_path, out_path, checkpoint_dir,
     for shape in in_path_of_shape:
         print('Processing images of shape %s' % shape)
         ffwd(in_path_of_shape[shape], out_path_of_shape[shape], 
-            checkpoint_dir, device_t, batch_size)
+            checkpoint_dir, device_t, batch_size,
+            data_format=data_format, num_base_channels=num_base_channels)
 
 def build_parser():
     parser = ArgumentParser()
@@ -177,6 +261,19 @@ def build_parser():
                         dest='allow_different_dimensions', 
                         help='allow different image dimensions')
 
+    # more cli params
+    parser.add_argument('--data-format',
+                        dest='data_format', 
+                        type=str,
+                        default='NHWC',
+                        help='data format, NHWC or NCHW.  default is NHWC')
+
+    parser.add_argument('--num-base-channels',
+                        dest='num_base_channels', 
+                        type=int,
+                        default=32,
+                        help='number of base channels in 1st layer.  default is 32')
+
     return parser
 
 def check_opts(opts):
@@ -199,17 +296,23 @@ def main():
             out_path = opts.out_path
 
         ffwd_to_img(opts.in_path, out_path, opts.checkpoint_dir,
-                    device=opts.device)
+                    device=opts.device,
+                    data_format=opts.data_format, num_base_channels=opts.num_base_channels # more cli params
+                    )
     else:
         files = list_files(opts.in_path)
         full_in = [os.path.join(opts.in_path,x) for x in files]
         full_out = [os.path.join(opts.out_path,x) for x in files]
         if opts.allow_different_dimensions:
             ffwd_different_dimensions(full_in, full_out, opts.checkpoint_dir, 
-                    device_t=opts.device, batch_size=opts.batch_size)
+                    device_t=opts.device, batch_size=opts.batch_size,
+                    data_format=opts.data_format, num_base_channels=opts.num_base_channels # more cli params
+                    )
         else :
             ffwd(full_in, full_out, opts.checkpoint_dir, device_t=opts.device,
-                    batch_size=opts.batch_size)
+                    batch_size=opts.batch_size,
+                    data_format=opts.data_format, num_base_channels=opts.num_base_channels # more cli params
+                    )
 
 if __name__ == '__main__':
     main()
