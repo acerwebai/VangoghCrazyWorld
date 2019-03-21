@@ -117,10 +117,11 @@ Before training, you need get dataset from [COCO](http://images.cocodataset.org/
 Now, you have all the packages for running the pre-trained models
 You can have a trial run the starrynight style model that we have pre-trained, from the as following 
 
+for example: you want to evaluate images in examples/content with starrynight-300-255-NHWC_nbc8_bs1_7e00_1e03_0.01the instruction is as here.
 ```
-python evaluate.py --data-format NHWC --num-base-channels 8 --checkpoint path/to/style/starrynight \
-  --in-path dir/of/test/imgs/  \
-  --out-path dir/for/results/  \
+python evaluate.py --data-format NHWC --num-base-channels 8 --checkpoint tf-models/starrynight-300-255-NHWC_nbc8_bs1_7e00_1e03_0.01 \
+  --in-path examples/content  \
+  --out-path examples/results/  \
   --allow-different-dimensions
  
 ```
@@ -137,16 +138,20 @@ where
 Let's start to do the training
 
 ```
-python style.py --data-format NHWC --num-base-channels 8 --style path/to/style/starrynight.jpg \
-  --checkpoint-dir checkpoint/path \
-  --test path/to/test/img.jpg \
-  --test-dir path/to/test/dir \
-  --content-weight 1.5e1 \
+python style.py --data-format NHWC --num-base-channels 8 --style examples/style/starrynight-300-255.jpg \
+  --checkpoint-dir ckpts \
+  --test examples/content/farm.jpg \
+  --test-dir examples/result \
+  --content-weight 7e0 \
+  --style-weight 1e3
   --checkpoint-iterations 1000 \
-  --batch-size 8
+  --learning-rate 1e-3
+  --batch-size 1
 ```
 
 where
+
+you need create a folder "ckpts" in the root of this project to save chackpoint files.
 * --data-format: NHWC is for tensorflow sieries framework, NCHW is for non-tensorflow series, ex. ONNX that WinML required.
 * --num-base-channels: it's used to reduce model size to improve inference time on Web, and other lower compute platform.
 * --checkpoint-dir: is the path to save checkpoint in
@@ -169,9 +174,9 @@ where
 You can evaluate the trained models via
 
 ```
-python evaluate.py --data-format NHWC --num-base-channels 8 --checkpoint path/to/style/starrynight \
-  --in-path dir/of/test/imgs/ \
-  --out-path dir/for/results/
+python evaluate.py --data-format NHWC --num-base-channels 8 --checkpoint tf-models/starrynight-300-255-NHWC_nbc8_bs1_7e00_1e03_0.001 \
+  --in-path examples/content/farm.jpg \
+  --out-path examples/results/
 ```
 
 
@@ -188,10 +193,11 @@ In this practice, we offer 3 style similar level to let you experience the diffe
 
 If you need get freeze model file, following the instruction that tensorflow bundled here
 ```
-python -m tensorflow.python.tools.freeze_graph --input_graph=tf-model/path/to/checkpoint/graph.pbtxt \
---input_checkpoint=tf-model/path/to/checkpoint/saver \
---output_graph=path/to/pb/file --output_node_names="output"
+python -m tensorflow.python.tools.freeze_graph --input_graph=tf-model/starrynight-300-255-NHWC_nbc8_bs1_7e00_1e03_0.001/graph.pbtxt \
+--input_checkpoint=tf-model/starrynight-300-255-NHWC_nbc8_bs1_7e00_1e03_0.001/saver \
+--output_graph=tf-models/starrynight.pb --output_node_names="output"
 ```
+
 
 ## Implementation Details
 The implementation is based on the [Fast Style Transfer in TensorFlow from ](https://github.com/lengstrom/fast-style-transfer) from [lengstrom](https://github.com/lengstrom/fast-style-transfer/commits?author=lengstrom)
@@ -225,9 +231,9 @@ Base on starry night with 300x255:
 Following are some example that training target style by parameters, content weight(cw), style weight(sw), learning rate(lr), and batch size: 1. 
 
 <table><tr><td>content</td><td>Result</td><td>Vangogh Style</td></tr>
-<tr><td><img src = 'examples/content/Taipei101Fireworks2017.jpg' height = '180px'> <br> CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/4591be29-a60e-4499-99b1-0158ae5a2620'> Sinchen.Lin</a></td><td><img src='examples/results/Taipei101Fireworks2017-starrynight-7-1000.jpg' height='180px'><br>cw:7e0, sw:1e3, lr:1e-2</td><td><img src = 'examples/style/Starry_Night.jpg' height = '180px'></td></tr>
+<tr><td><img src = 'examples/content/Taipei101Fireworks2017.jpg' height = '180px'> <br> CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/4591be29-a60e-4499-99b1-0158ae5a2620'> Sinchen.Lin</a></td><td><img src='examples/results/Taipei101Fireworks2017-starrynight-7-1000.jpg' height='180px'><br>cw:7e0, sw:1e3, lr:1e-2</td><td><img src = 'examples/style/Starry_Night.jpg' height = '180px'><br>The starry night</td></tr>
 
-<tr><td><img src = 'examples/content/livingroom.jpg' height = '180px'><br> CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/c1e8a8f5-391a-4467-8740-bbcf7d1fb490'>ppacificvancouver</a></td><td><img src = 'examples/results/livingroom.jpg' height = '180px'><br>cw:7e0, sw:1e3, lr:1e-3</td><td><img src = 'examples/style/bedroom-315-256.jpg' height = '180px'></td></tr>
+<tr><td><img src = 'examples/content/livingroom.jpg' height = '180px'><br> CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/c1e8a8f5-391a-4467-8740-bbcf7d1fb490'>ppacificvancouver</a></td><td><img src = 'examples/results/livingroom.jpg' height = '180px'><br>cw:7e0, sw:1e3, lr:1e-3</td><td><img src = 'examples/style/bedroom-315-256.jpg' height = '180px'>Vincent's bedroom in Aries</td></tr>
 
 <tr><td><img src = 'examples/content/farm.jpg' height = '180px'><br>CC BY 2.0 by <a href='https://ccsearch.creativecommons.org/photos/f1dc2822-f4c1-4f66-8990-f9985a5dc179'> Andrew Gould</a></td><td><img src = 'examples/results/farm-r.jpg' height = '180px'><br>cw:7e0, sw:1e3, lr:1e-3</td><td><img src = 'examples/style/Red-Vineyards-328-256.jpg' height = '180px'></td></tr>
 
