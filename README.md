@@ -53,8 +53,8 @@ You can download the pre-trained models from here and should find the checkpoint
 * Python 3.6
 
 * (Optional) If your machine support [nVidia GPU with CUDA](https://developer.nvidia.com/cuda-gpus), please refer to the installation from nVidia 
-	* CUDA v9.0: https://docs.nvidia.com/cuda/
-	* cuDNN v7.3.0: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
+	* CUDA v9.0: https://developer.nvidia.com/cuda-90-download-archive
+	* cuDNN v7.3.0 for CUDA 9.0: https://developer.nvidia.com/rdp/cudnn-archive
 	* Note: CUDA and cuDNN has [dependencies](https://docs.nvidia.com/deeplearning/sdk/cudnn-support-matrix/index.html)
 
 * Tensorflow 1.12.0
@@ -121,7 +121,7 @@ for example: you want to evaluate images in examples/content with starrynight-30
 ```
 python evaluate.py --data-format NHWC --num-base-channels 8 --checkpoint tf-models/starrynight-300-255-NHWC_nbc8_bs1_7e00_1e03_0.01 \
   --in-path examples/content  \
-  --out-path examples/results/  \
+  --out-path examples/results  \
   --allow-different-dimensions
  
 ```
