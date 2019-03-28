@@ -119,7 +119,7 @@ You can have a trial run the starrynight style model that we have pre-trained, f
 
 for example: you want to evaluate images in examples/content with starrynight-300-255-NHWC_nbc8_bs1_7e00_1e03_0.01the instruction is as here.
 ```
-python evaluate.py --data-format NHWC --num-base-channels 8 --checkpoint tf-models/starrynight-300-255-NHWC_nbc8_bs1_7e00_1e03_0.01 \
+python evaluate.py --data-format NHWC --num-base-channels 4 --checkpoint tf-models/starrynight-300-255-NHWC_nbc4_bs1_7e00_1e03_0.01 \
   --in-path examples/content  \
   --out-path examples/results  \
   --allow-different-dimensions
@@ -138,7 +138,7 @@ where
 Let's start to do the training
 
 ```
-python style.py --data-format NHWC --num-base-channels 8 --style examples/style/starrynight-300-255.jpg \
+python style.py --data-format NHWC --num-base-channels 4 --style examples/style/starrynight-300-255.jpg \
   --checkpoint-dir ckpts \
   --test examples/content/farm.jpg \
   --test-dir examples/result \
@@ -174,7 +174,7 @@ you need create a folder "ckpts" in the root of this project to save chackpoint 
 You can evaluate the trained models via
 
 ```
-python evaluate.py --data-format NHWC --num-base-channels 8 --checkpoint tf-models/starrynight-300-255-NHWC_nbc8_bs1_7e00_1e03_0.001 \
+python evaluate.py --data-format NHWC --num-base-channels 4 --checkpoint tf-models/starrynight-300-255-NHWC_nbc4_bs1_7e00_1e03_0.01 \
   --in-path examples/content/farm.jpg \
   --out-path examples/results/
 ```
