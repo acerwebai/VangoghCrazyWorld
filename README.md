@@ -57,7 +57,9 @@ You can download the pre-trained models from here and should find the checkpoint
 	* cuDNN v7.3.0 for CUDA 9.0: https://developer.nvidia.com/rdp/cudnn-archive
 	* Note: CUDA and cuDNN has [dependencies](https://docs.nvidia.com/deeplearning/sdk/cudnn-support-matrix/index.html)
 
-* Tensorflow 1.12.0
+* Tensorflow 1.12.0 
+  * pip install tensorflow==1.12.0 for CPU
+  * pip install tensorflow-gpu==1.12.0 for GPU
 
 * Pillow 3.4.2, scipy 0.18.1, numpy 1.11.2, ffmpeg 3.1.3  or later version
 
@@ -80,7 +82,7 @@ virtualenv -p python3 $HOME/tmp/VangoghCrazyWorld-venv/
 And activate the virtual environment like this 
 
 ```
-source $HOME/tmp/VangoghCrazyWorld-venv/bin/activate
+source $HOME/tmp/VangoghCrazyWorld-venv/Scripts/activate
 ```
 
 In that, you can isolate the working environments project by project.
